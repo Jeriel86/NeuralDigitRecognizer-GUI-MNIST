@@ -23,13 +23,13 @@ X = X/255
 y = data['label']
 y = y.flatten()
 
-# Splitting data into trining set with 60.000 examples
-X_train = X[:60000, :]
-y_train = y[:60000]
+# Splitting data into trining set with 40.000 examples
+X_train = X[:40000, :]
+y_train = y[:40000]
 
-# Splitting data into testing set with 10.000 examples
-X_test = X[60000:, :]
-y_test = y[60000:]
+# Splitting data into testing set with 30.000 examples
+X_test = X[40000:, :]
+y_test = y[40000:]
 
 m = X.shape[0]
 input_layer_size = 784 # Images are of (28 X 28) px so there will be 784 features
@@ -41,7 +41,7 @@ initial_Theta1 = initialise(hidden_layer_size, input_layer_size)
 initial_Theta2 = initialise(num_labels, hidden_layer_size)
 
 # Unrolling parameters into a single column vector
-initial_nn_params = np.concatenate(initial_Theta1.flatten(), initial_Theta2.flatten())
+initial_nn_params = np.concatenate([initial_Theta1.flatten(), initial_Theta2.flatten()])
 maxiter = 100
 lambda_reg = 0.1
 myargs = (input_layer_size, hidden_layer_size, num_labels, X_train, y_train, lambda_reg)
